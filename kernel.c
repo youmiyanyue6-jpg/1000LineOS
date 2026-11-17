@@ -23,7 +23,7 @@ void kernel_main(void) {
 
 //リンカで指定されたプログラムの開始地点になる関数
 __attribute__((section(".text.boot")))  //この関数を.text.boot(隣家で指定された開始地点)というセクションに置くということ
-__attribute__((naked))                  //関数呼び出し時のsp(スタックポインタ)の初期化を避ける。この関数内で初めてspを初期化するため
+__attribute__((naked))                  //関数呼び出し時のsp(スタックポインタ)の初期化を避ける。これは、この関数内で初めてspを初期化するため
 void boot(void) {
     __asm__ __volatile__(
         "mv sp, %[stack_top]\n"
